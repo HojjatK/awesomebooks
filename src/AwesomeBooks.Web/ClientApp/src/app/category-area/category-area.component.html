@@ -1,0 +1,67 @@
+<app-page-menu [newText]="'New Area'"
+               [uploadFile]="categoryAreaFile"
+               [downloadFileUrl]="'api/category-area/download'"
+               (newSelected)="newCategoryArea()"
+               (uploadSelected)="onSubmitUpload($event)">
+</app-page-menu>
+<app-alert-error errorTitle="{{errorsCount}} Record(s) were not Imported"
+                 [errorMessages]="errorMessages">
+</app-alert-error>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <!-- Selection Column -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox [disabled]="true"
+                      [(indeterminate)]="hasSelection">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? toggleSelection(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>        
+        <button class="edit-row" mat-button color="primary" *ngIf="selection.isSelected(row)" (click)="editCategoryArea()">
+          <mat-icon>mode_edit</mat-icon>
+        </button>          
+        <button class="delete-row" mat-button color="warn" *ngIf="selection.isSelected(row)" (click)="deleteCategoryArea()">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let categoryArea"> {{categoryArea.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let categoryArea">{{categoryArea.name}}</mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let categoryArea"> {{categoryArea.description}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"
+             [ngClass]="{'selected': selection.isSelected(row)}"></mat-row>
+
+  </mat-table>
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 50]">
+  </mat-paginator>
+</div>

@@ -1,0 +1,23 @@
+<app-form-bar menuText="New Category Area"></app-form-bar>
+
+<form [formGroup]="newCategoryAreaForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Name*</label>
+    <input type="text" class="form-control" formControlName="name">
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control" rows="4" formControlName="description" placeholder="A short description about category area">
+  </textarea>
+  </div>
+
+  <div *ngIf="errorMessage != undefined && errorMessage != ''" class="alert alert-danger">
+    {{errorMessage}}
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+

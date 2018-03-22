@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Awesome Books</title>
+    <link type="text/css" rel="stylesheet" href="~/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="~/site.css" />
+    <base href="~/" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                @*<img src="" width="30" height="30" class="d-inline-block align-top" alt="">*@
+                Awesome Books
+            </a>
+            <ul class="nav navbar-nav pull-right">
+                <li>
+                    <a href="/admin">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/assets/js/jquery-1.9.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/assets/js/bootstrap.min.js"></script>
+</body>
+</html>

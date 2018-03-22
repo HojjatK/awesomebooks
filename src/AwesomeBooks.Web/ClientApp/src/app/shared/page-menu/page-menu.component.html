@@ -1,0 +1,23 @@
+<mat-toolbar class="button-row">
+  <button mat-raised-button color="primary" (click)="onNewSelected()"><mat-icon>add</mat-icon>{{newText}}</button>
+  <button class="toggle-more" mat-raised-button (click)="onToggleMore()">
+    <mat-icon *ngIf="!isExtToolbarVisible">expand_more</mat-icon>
+    <mat-icon *ngIf="isExtToolbarVisible">expand_less</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-toolbar [ngClass]="{'hidden': !isExtToolbarVisible}" id="ext-toolbar">
+  <div>
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmitUpload()">
+      <div style="display:inline-flex">
+        <input type="file" class="form-control"
+               #uploadInput
+               formControlName="uploadFileControl"
+               [(ngModel)]="uploadFile"
+               (change)="uploadFileChange(uploadInput.files) " />
+        <button mat-raised-button color="primary" type="submit" style="min-width:0px"><mat-icon>file_upload</mat-icon></button>
+      </div>
+    </form>
+  </div>
+  <a class="download" mat-raised-button color="primary" href="{{downloadFileUrl}}"><mat-icon>file_download</mat-icon>Download</a>
+</mat-toolbar>

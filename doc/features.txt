@@ -1,0 +1,14 @@
+Awesome Books Features
+Admin
+1- Category(CRUD/Import/Export)
+2- Book (CRUD/Import/Export)
+3- Move Book to another Category
+4- Authentication/Authorization
+5- Busy Indicator
+6- Pagination
+7- Ability to Upload/Download book content (hmmm?) [should only work locally]
+
+Front-End
+1- Ability to have different view (Tab/Tree)
+2- Search Books
+

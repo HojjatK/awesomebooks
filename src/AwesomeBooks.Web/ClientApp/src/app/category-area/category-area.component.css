@@ -1,0 +1,74 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-column-select {
+  overflow: visible;
+}
+
+mat-toolbar button {
+  margin-right: 5px;
+}
+
+
+mat-row:nth-child(even) {
+  background-color: #ededed;
+}
+
+.mat-header-row {
+  background-color: #808080;  
+}
+
+.mat-header-row .mat-header-cell {
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+}
+
+.mat-row.selected {
+  background: #c3edf7;
+}
+
+.mat-column-select {
+  flex: 1;
+}
+
+.mat-column-id {
+  flex: 1;
+}
+
+.mat-column-name {
+  flex: 2;
+}
+
+.mat-column-description {
+  flex: 4;
+}
+
+button.edit-row,
+button.delete-row {
+ min-width: 36px;
+ margin-bottom: 5px;
+ padding: 0px;
+}

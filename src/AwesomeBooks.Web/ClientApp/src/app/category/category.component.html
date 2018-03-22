@@ -1,0 +1,73 @@
+<app-page-menu [newText]="'New Category'"
+               [uploadFile]="categoryFile"
+               [downloadFileUrl]="'api/category/download'"
+               (newSelected)="newCategory()"
+               (uploadSelected)="onSubmitUpload($event)">
+</app-page-menu>
+<app-alert-error errorTitle="{{errorsCount}} Record(s) were not Imported"
+                 [errorMessages]="errorMessages">
+</app-alert-error>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <!-- Selection Column -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox [disabled]="true"
+                      [(indeterminate)]="hasSelection">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? toggleSelection(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+        <button class="edit-row" mat-button color="primary" *ngIf="selection.isSelected(row)" (click)="editCategory()">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+        <button class="delete-row" mat-button color="warn" *ngIf="selection.isSelected(row)" (click)="deleteCategory()">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let category"> {{category.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Area Column -->
+    <ng-container matColumnDef="areaName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Area </mat-header-cell>
+      <mat-cell *matCellDef="let category"> {{category.areaName}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let category"> {{category.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let category"> {{category.description}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"
+             [ngClass]="{'selected': selection.isSelected(row)}"></mat-row>
+
+  </mat-table>
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[10, 20, 50]">
+  </mat-paginator>
+</div>

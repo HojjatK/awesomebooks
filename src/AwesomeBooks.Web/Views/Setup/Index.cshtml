@@ -1,0 +1,65 @@
+﻿@using AwesomeBooks.Web.ViewModels
+@{
+    ViewData["Title"] = "Awesome Books Home";
+}
+@model SetupViewModel;
+
+<style>
+    .login {
+        margin: auto;
+        width: 70%;
+    }
+</style>
+<div class="login-box container">    
+    <section class="login">
+        <div class="alert alert-info text-center">
+            <p><strong>Welcome to <em>Awesome Books</em> setup</strong></p>
+            <p>Provide the admin user detail in order to setup the app.</p>
+        </div>
+        <hr />
+        @using (Html.BeginForm("Setup",
+                              "Setup",
+                              null,
+                              FormMethod.Post,
+                              true,
+                              new { @class = "setup-form", role = "form" }))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+            <div class="form-group input-group input-group-lg">
+                <div class="input-group-addon"><span class="fa fa-lg fa-envelope" /></div>
+                @Html.TextBoxFor(m => m.AdminEmail, new
+                {
+                    @class = "form-control",
+                    @id = "user-name",
+                    @type = "email",
+                    @placeholder = "Admin Email",
+                    @required = "required",
+                    @tabindex = "1"
+                })
+            </div>
+            <div class="form-group input-group input-group-lg">
+                <div class="input-group-addon"><span class="fa fa-lg fa-key" /></div>
+                @Html.PasswordFor(m => m.AdminPassword, new
+                {
+                    @class = "form-control",
+                    @id = "password",
+                    @placeholder = "Password",
+                    @required = "required",
+                    @tabindex = "2"
+                })
+            </div>
+            <div class="form-group input-group input-group-lg">
+                <div class="input-group-addon"><span class="fa fa-lg fa-key" /></div>
+                @Html.PasswordFor(m => m.ConfirmAdminPassword, new
+                {
+                    @class = "form-control",
+                    @id = "confirm-password",
+                    @placeholder = "Confirm Password",
+                    @required = "required",
+                    @tabindex = "3"
+                })
+            </div>
+            <input type="submit" id="setup" class="btn btn-success fa-lg" value="Submit" tabindex="4" />
+        }
+    </section>
+</div>

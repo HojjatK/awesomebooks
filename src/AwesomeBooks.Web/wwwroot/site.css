@@ -1,0 +1,101 @@
+﻿body {
+    background: #eee;
+    color: #222;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.category {
+    padding: 10px 0px;
+    margin: 5px 5px 25px 5px;
+}
+
+.category h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+}
+
+.category .sub-category {
+    background: rgba(255, 255, 255, 0.8);
+    margin: 20px 15px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 5px 10px 5px #444;
+}
+
+.category .sub-category h2 {
+    font-size: 22px;
+    font-style: italic;
+    color: #08093e;
+}
+
+.category .sub-category > ol {
+    display: flex;
+    flex-wrap: wrap;
+    /*overflow-x: scroll;*/
+}
+
+.category .sub-category > ol > li {
+    /*margin: 5px auto;*/
+    margin: 5px 10px;
+    counter-increment: step-counter;
+    background-color: rgba(215, 215, 215, 0.5);
+    padding: 7px;
+    list-style: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.category .sub-category > ol > li.fav {
+    background: rgba(229, 189, 93, 0.5);
+}
+
+.category .sub-category > ol > li h2::before {
+    content: counter(step-counter);
+    margin-right: 5px;
+    font-size: 90%;
+    color: black;
+    background: rgba(5, 5, 5, 0.1);
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.category .sub-category .book {
+    display: contents;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15px 2px;
+}
+
+.category .sub-category .book .summary {
+    color: #444;
+    margin-left: 15px;
+}
+
+.category .sub-category .book .image {
+}
+
+.category .sub-category .book h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.category .sub-category .book h3 {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.category .sub-category .book h4 {
+    font-size: 12px;
+}
+
+.category .sub-category .book .image img {
+    max-height: 200px;
+    max-width: 150px;
+}
