@@ -1,6 +1,7 @@
 ﻿body {
     background: #eee;
     color: #222;
+    font-family: 'Noto Serif', serif;
 }
 
 h1 {
@@ -11,6 +12,10 @@ h1 {
 .category {
     padding: 10px 0px;
     margin: 5px 5px 25px 5px;
+}
+
+.category ul > li {
+    list-style: none;
 }
 
 .category h1 {
@@ -66,7 +71,6 @@ h1 {
 }
 
 .category .sub-category .book {
-    display: contents;
     width: 300px;
     margin: 0 auto;
     text-align: center;
