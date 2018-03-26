@@ -4,60 +4,62 @@
 }
 @model BooksViewModel;
 
-<div class="container-fluid">
-    <ul id="books-tabs" class="nav nav-pills">
-        @{int i = 0;}
-        @foreach (var c in Model.CategoryAreas)
-        {
-            <li class="nav @(i==0 ? "active" : "")"><a href="#@c.Ref" data-toggle="tab">@c.Name</a></li>
-            i++;
-        }
-    </ul>
-    <div class="tab-content">
-        @{i = 0;}
-        @foreach (var area in Model.CategoryAreas)
-        {
-            <section class="category tab-pane @(i==0 ? "active" : "")" id="@area.Ref">
-                <ul class="nav nav-tabs">
-                    @{ int j = 0;}
-                    @foreach (var category in area.Categories)
-                    {
-                        <li class="nav @(j==0 ? "active" : "")"><a href="#@category.Ref" data-toggle="tab">@category.Name</a></li>
-                        j++;
-                    }
-                </ul>
-                <div class="tab-content">
-                    @{ j = 0;}
-                    @foreach (var category in area.Categories)
-                    {
-                        <section class="sub-category tab-pane @(j==0 ? "active" : "")" id="@category.Ref">
-                            <h2>@category.Name</h2>
-                            <hr />
-                            <ol>
-                                @foreach (var book in category.Books)
-                                {
-                                    <li class="fav">
-                                        <article class="book">
-                                            <div class="image">
-                                                <a class="amazon" target="_blank" href="@book.AmazonUrl">
-                                                    <img src="@book.ImageUrl" alt="image" />
-                                                </a>
-                                            </div>
-                                            <div class="summary">
-                                                <h2 class="title">@book.Title</h2>
-                                                <h3 class="author">@book.Authors</h3>
-                                                <h4>@book.Year</h4>
-                                            </div>
-                                        </article>
-                                    </li>
-                                }
-                            </ol>
-                        </section>
-                        j++;
-                    }
-                </div>
-            </section>
-            i++;
-        }
+<div class="container-wrapper">
+    <div class="container-fluid">
+        <ul id="books-tabs" class="nav nav-pills">
+            @{int i = 0;}
+            @foreach (var c in Model.CategoryAreas)
+            {
+                <li class="nav @(i==0 ? "active" : "")"><a href="#@c.Ref" data-toggle="tab">@c.Name</a></li>
+                i++;
+            }
+        </ul>
+        <div class="tab-content">
+            @{i = 0;}
+            @foreach (var area in Model.CategoryAreas)
+            {
+                <section class="category tab-pane @(i==0 ? "active" : "")" id="@area.Ref">
+                    <ul class="nav nav-tabs">
+                        @{ int j = 0;}
+                        @foreach (var category in area.Categories)
+                        {
+                            <li class="nav @(j==0 ? "active" : "")"><a href="#@category.Ref" data-toggle="tab">@category.Name</a></li>
+                            j++;
+                        }
+                    </ul>
+                    <div class="tab-content">
+                        @{ j = 0;}
+                        @foreach (var category in area.Categories)
+                        {
+                            <section class="sub-category tab-pane @(j==0 ? "active" : "")" id="@category.Ref">
+                                <h2>@category.Name</h2>
+                                <hr />
+                                <ol>
+                                    @foreach (var book in category.Books)
+                                    {
+                                        <li class="fav">
+                                            <article class="book">
+                                                <div class="image">
+                                                    <a class="amazon" target="_blank" href="@book.AmazonUrl">
+                                                        <img src="@book.ImageUrl" alt="image" />
+                                                    </a>
+                                                </div>
+                                                <div class="summary">
+                                                    <h2 class="title">@book.Title</h2>
+                                                    <h3 class="author">@book.Authors</h3>
+                                                    <h4>@book.Year</h4>
+                                                </div>
+                                            </article>
+                                        </li>
+                                    }
+                                </ol>
+                            </section>
+                            j++;
+                        }
+                    </div>
+                </section>
+             i++;
+             }
+        </div>
     </div>
 </div>

@@ -57,9 +57,12 @@ namespace AwesomeBooks.Domain.EF
 
             // App
             builder.Entity<AppSetting>().ToTable("AppSetting");
-            builder.Entity<Book>().ToTable("Book");
-            builder.Entity<CategoryArea>().ToTable("CategoryArea");
-            builder.Entity<Category>().ToTable("Category");
+            var bookTable = builder.Entity<Book>().ToTable("Book");
+            bookTable.HasIndex(b => b.Name);
+            bookTable.HasIndex(b => b.PublishYear);
+            bookTable.HasIndex(b => b.Authors);
+            builder.Entity<CategoryArea>().ToTable("CategoryArea").HasIndex(ca => ca.Name);
+            builder.Entity<Category>().ToTable("Category").HasIndex(c => c.Name);
         }
     }
 }

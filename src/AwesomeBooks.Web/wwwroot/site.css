@@ -9,6 +9,56 @@ h1 {
     text-align: center;
 }
 
+nav.navbar.navbar-bg {
+    margin-bottom: 0px;
+}
+
+.navbar-bg {
+    background-color: #334e66;
+    border-bottom-color: #233646;
+}
+.navbar-bg a.navbar-brand {
+    color: #ddd;
+}
+
+.navbar-bg a.navbar-brand:hover {
+    color: #fff;
+}
+
+.navbar-bg .nav > li > a {
+    color: #ddd;
+}
+.navbar-bg .nav > li > a:hover,
+.navbar-bg .nav > li > a:focus {
+    background-color: transparent;
+}
+.container-wrapper {
+    background: #cdd5df;
+}
+.container-wrapper .tab-content{
+    background: #eee;
+}
+
+#books-tabs{
+    padding: 10px 5px;
+}
+
+.nav-pills > li {
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+
+.nav-pills > li > a {
+    color: #ddd;
+    background-color: #40607b;
+}
+
+    .nav-pills > li > a:focus,
+    .nav-pills > li > a:hover {
+        color: #eee;
+        background-color: #3573a9;
+    }
+
 .category {
     padding: 10px 0px;
     margin: 5px 5px 25px 5px;
@@ -25,38 +75,40 @@ h1 {
 }
 
 .category .sub-category {
-    background: rgba(255, 255, 255, 0.8);
-    margin: 20px 15px;
-    padding: 5px;
-    border-radius: 10px;
-    box-shadow: 5px 10px 5px #444;
+    background-color: rgba(255, 255, 255, 0.7);
+    min-height: 400px;
 }
 
 .category .sub-category h2 {
-    font-size: 22px;
     font-style: italic;
+    text-align: center;
     color: #08093e;
+    margin-top: 0px;
+    padding-top: 10px;
+    margin-bottom: 5px;
 }
 
 .category .sub-category > ol {
     display: flex;
+    padding: 0px;
+    flex-direction: row;
     flex-wrap: wrap;
-    /*overflow-x: scroll;*/
+    justify-content: space-around;
 }
 
 .category .sub-category > ol > li {
-    /*margin: 5px auto;*/
-    margin: 5px 10px;
+    margin: 2px;
+    margin-bottom: 15px;
     counter-increment: step-counter;
-    background-color: rgba(215, 215, 215, 0.5);
-    padding: 7px;
+    background-color: rgba(215, 215, 215, 0.3);
+    padding: 5px;
     list-style: none;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px #888888;
+    border-radius: 2px;
+    box-shadow: 5px 5px 5px #888;
 }
 
 .category .sub-category > ol > li.fav {
-    background: rgba(229, 189, 93, 0.5);
+    background: rgba(229, 189, 93, 0.3);
 }
 
 .category .sub-category > ol > li h2::before {
@@ -86,12 +138,13 @@ h1 {
 }
 
 .category .sub-category .book h2 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
+    line-height: 1.3em;
 }
 
 .category .sub-category .book h3 {
-    font-size: 14px;
+    font-size: 12px;
     font-style: italic;
 }
 
